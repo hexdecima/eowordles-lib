@@ -41,7 +41,7 @@
 69,Antlion,45,6,0,0,60,Desert,Surface/Underground,Common
 71,Dungeon Slime,150,7,0,1,50,Dungeon,Any,Uncommon
 73,Goblin Scout,80,6,0,2,0,Forest,Surface,Rare
-74,Bird,5,0,0,0,0,Forest/Ice/Hallow,Surface,Common
+74,Bird,5,0,0,0,0,Forest/Snow/Hallow,Surface,Common
 75,Pixie,150,20,0,3,50,Hallow,Surface/Underground,Common
 77,Armored Skeleton,260,28,0,4,0,Any,Caverns,Common
 78,Mummy,130,16,0,6,0,Desert,Surface/Underground,Common
