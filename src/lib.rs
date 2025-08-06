@@ -37,6 +37,13 @@ pub enum Environment {
     OldOnes,
     Blood,
     Lunar,
+    Solar,
+    Stardust,
+    Vortex,
+    Nebula,
+    Legion, // Frost Legion
+    Frost,
+    Pumpkin,
     Unknown,
 }
 
@@ -68,6 +75,13 @@ impl Display for Environment {
             OldOnes => "Old One's Army",
             Blood => "Blood Moon",
             Lunar => "Lunar Events",
+            Solar => "Solar Pillar",
+            Stardust => "Stardust Pillar",
+            Vortex => "Vortex Pillar",
+            Nebula => "Nebula Pillar",
+            Legion => "Frost Legion",
+            Frost => "Frost Moon",
+            Pumpkin => "Pumpkin Moon",
             Unknown => "Unknown",
         };
 
@@ -102,7 +116,14 @@ impl From<&str> for Environment {
             "Martian" => Martian,
             "Eclipse" => Eclipse,
             "Lunar" => Lunar,
+            "Solar" => Solar,
+            "Stardust" => Stardust,
+            "Nebula" => Nebula,
+            "Vortex" => Vortex,
             "Rain" => Rain,
+            "Legion" => Legion,
+            "Frost" => Frost,
+            "Pumpkin" => Pumpkin,
             _ => Unknown,
         }
     }
