@@ -1,4 +1,4 @@
-# id,name,maxlife,gold,silver,copper,environment,layer,rarity (excludes bosses and boss minons. worm enemies apply their body defence.)
+# id,name,maxlife,def,gold,silver,copper,environment,layer,rarity (excludes bosses and boss minons. worm enemies apply their body defence. negative ids are 1000 like -1 being 1001)
 1,Blue Slime,25,2,0,0,25,Forest/Any,Surface/Underground,Common
 2,Demon Eye,60,2,0,0,75,Any/Night,Surface,Common
 3,Zombie,45,6,0,0,60,Any/Night,Surface,Common
@@ -73,6 +73,9 @@
 138,Illuminant Slime,180,30,0,4,0,Hallow,Underground/Caverns,Common
 140,Posessed Armor,260,28,0,4,0,Any/Night,Surface/Underground,Common
 141,Toxic Sludge,150,18,0,4,0,Any,Underground,Uncommon
+143,Snowman Gangsta,200,20,0,4,0,Event/Legion,Surface,Common
+144,Mister Stabby,240,26,0,4,0,Event/Legion,Surface,Common
+145,Snow Balla,220,22,0,4,0,Event/Legion,Surface,Common
 147,Ice Slime,30,4,0,0,50,Snow/Day,Surface,Common
 148,Penguin,50,0,0,0,0,Snow,Surface,Common
 150,Ice Bat,30,6,0,2,50,Snow,Underground,Common
@@ -92,6 +95,8 @@
 167,Undead Viking,70,10,0,2,0,Snow,Underground,Common
 168,Corrupt Penguin,70,4,0,5,0,Snow/Night/Event,Surface,Uncommon
 169,Ice Elemental,200,20,0,15,0,Snow/Night,Surface/Underground,Common
+170,Pigron (Corrupt),210,16,0,20,0,Snow/Corruption,Underground,Uncommon
+171,Pigron (Hallow),210,16,0,20,0,Show/Hallow,Underground,Uncommon
 172,Rune Wizard,600,30,0,50,0,Any,Caverns,Rare
 173,Crimera,40,8,0,0,90,Crimson,Surface,Common
 174,Herpling,220,26,0,4,50,Crimson,Surface/Underground/Caverns,Common
@@ -100,11 +105,13 @@
 177,Derpling,300,26,0,5,0,Jungle,Surface,Common
 179,Crimson Axe,200,18,0,10,0,Crimson,Underground/Caverns,Uncommon
 181,Face Monster,70,10,0,2,0,Crimson,Surface,Common
-182,Floaty Cross,240,18,0,5,0,Crimson,Underground/Caverns,Common
+182,Floaty Gross,240,18,0,5,0,Crimson,Underground/Caverns,Common
 183,Crimslime,200,26,0,4,0,Crimson,Surface,Common
+184,Spiked Ice Slime,60,8,0,2,0,Snow,Underground,Common
+185,Snow Flinx,70,12,0,2,0,Snow,Underground,Uncommon
 195,Nymph,300,16,2,0,0,Any,Caverns,Rare
 197,Armored Viking,280,28,0,5,0,Snow,Underground,Uncommon
-198,Lizhard,400,20,0,6,50,Jungle,Underground,Common
+198,Lihzahrd,400,20,0,6,50,Jungle,Underground,Common
 201,Skeleton,65,12,0,1,30,Any,Caverns,Common
 205,Moth,1000,28,0,6,0,Jungle,Underground/Caverns,Rare
 206,Icy Merman,280,30,0,5,0,Snow,Underground,Uncommon
@@ -151,23 +158,30 @@
 291,Skeleton Sniper,400,28,0,10,0,Dungeon,Any,Uncommon
 292,Tactical Skeleton,400,28,0,10,0,Dungeon,Any,Uncommon
 293,Skeleton Commando,400,28,0,10,0,Dungeon,Any,Uncommon
+298,Cardinal,5,0,0,0,0,Forest/Snow/Hallow,Surface,Uncommon
 299,Squirrel,5,0,0,0,0,Forest,Surface,Common
 300,Mouse,5,0,0,0,0,Any,Underground/Caverns,Common
 301,Raven,35,2,0,0,50,Graveyard,Surface,Common
 304,Hoppin' Jack,175,20,0,5,0,Forest/Night/Graveyard,Surface,Uncommon
-305,Scarecrow,500,18,0,12,0,Night/Event,Surface,Common
-315,Headless Horseman,5000,40,1,0,0,Night/Event,Surface,Uncommon
+305,Scarecrow,500,18,0,12,0,Night/Event/Pumpkin,Surface,Common
+315,Headless Horseman,5000,40,1,0,0,Night/Pumpkin/Event,Surface,Uncommon
 316,Ghost,50,4,0,0,90,Graveyard,Any,Common
-326,Splinterling,1200,32,0,20,0,Night/Event,Surface,Common
-329,Hellhound,1800,38,0,30,0,Night/Event,Surface,Common
-330,Poltergeist,1250,44,0,45,0,Night/Event,Surface,Common
-338,Zombie Elf,600,18,0,12,0,Night/Event,Surface,Common
-342,Gingerbread Man,750,26,0,18,0,Night/Event,Surface,Common
-343,Yeti,3500,50,0,30,0,Night/Event,Surface,Uncommon
-347,Elf Copter,1200,28,0,10,0,Night/Event,Surface,Common
-348,Nutcracker,1800,26,0,15,0,Night/Event,Surface,Uncommon
-350,Elf Archer,900,30,0,9,0,Night/Event,Surface,Common
-351,Krampus,2500,40,0,30,0,Night/Event,Surface,Uncommon
+325,Mourning Wood,14000,34,1,0,0,Event/Night/Pumpkin,Surface,Uncommon
+327,Pumpking,26000,40,5,0,0,Event/Night/Pumpkin,Surface,Uncommon
+326,Splinterling,1200,32,0,20,0,Night/Event/Pumpkin,Surface,Common
+329,Hellhound,1800,38,0,30,0,Night/Event/Pumpkin,Surface,Common
+330,Poltergeist,1250,44,0,45,0,Night/Event/Pumpkin,Surface,Common
+338,Zombie Elf,600,18,0,12,0,Night/Event/Pumpkin,Surface,Common
+342,Gingerbread Man,750,26,0,18,0,Night/Event/Frost,Surface,Common
+343,Yeti,3500,50,0,30,0,Night/Event/Frost,Surface,Uncommon
+344,Everscream,13000,38,1,0,0,Event/Night/Frost,Surface,Uncommon
+345,Ice Queen,34000,38,5,0,0,Event/Night/Frost,Surface,Uncommon
+346,Santa-NK1,18000,56,1,0,0,Event/Night/Frost,Surface,Uncommon
+347,Elf Copter,1200,28,0,10,0,Night/Event/Frost,Surface,Common
+348,Nutcracker,1800,26,0,15,0,Night/Event/Frost,Surface,Uncommon
+350,Elf Archer,900,30,0,9,0,Night/Event/Frost,Surface,Common
+351,Krampus,2500,40,0,30,0,Night/Event/Frost,Surface,Uncommon
+352,Flocko,450,8,0,5,0,Event/Night/Frost,Surface,Uncommon
 355,Firefly,5,0,0,0,0,Forest/Night,Surface,Common
 356,Butterfly,5,0,0,0,0,Forest,Surface,Common
 357,Worm,5,0,0,0,0,Any,Surface,Common
@@ -188,24 +202,28 @@
 388,Martian Drone,300,16,0,10,0,Event/Martian,Surface,Common
 389,Gigazapper,600,16,0,12,0,Event/Martian,Surface,Common
 391,Scutlix,600,30,0,12,0,Event/Martian,Surface,Common
+392,Martian Saucer,17000,100,0,0,0,Event/Martian,Surface,Uncommon
 399,Martian Probe,500,5,0,0,0,Any,Space/Surface,Rare
-402,Milkyway Weaver,1200,0,0,0,0,Event/Lunar,Surface,Common
-405,Star Cell,300,50,0,0,0,Event/Lunar,Surface,Common
-407,Flow Invader,1500,38,0,0,0,Event/Lunar,Surface,Common
-409,Twinkle Popper,800,40,0,0,0,Event/Lunar,Surface,Common
-411,Stargazer,700,34,0,0,0,Event/Lunar,Surface,Common
-412,Crawltipede,10000,0,0,0,0,Event/Lunar,Surface,Common
-415,Drakomire,800,32,0,0,0,Event/Lunar,Surface,Common
-417,Sroller,700,34,0,0,0,Event/Lunar,Surface,Common
-418,Corite,600,26,0,0,0,Event/Lunar,Surface,Common
-419,Selenian,800,30,0,0,0,Event/Lunar,Surface,Common
-420,Nebula Floater,1300,20,0,0,0,Event/Lunar,Surface,Common
-421,Brain Suckler,330,34,0,0,0,Event/Lunar,Surface,Common
-423,Evolution Beast,850,46,0,0,0,Event/Lunar,Surface,Common
-424,Predictor,700,30,0,0,0,Event/Lunar,Surface,Common
-425,Storm Diver,800,40,0,0,0,Event/Lunar,Surface,Common
-426,Alien Queen,1000,44,0,0,0,Event/Lunar,Surface,Common
-429,Vortexian,700,34,0,0,0,Event/Lunar,Surface,Common
+402,Milkyway Weaver,1200,0,0,0,0,Event/Lunar/Stardust,Surface,Common
+405,Star Cell,300,50,0,0,0,Event/Lunar/Stardust,Surface,Common
+407,Flow Invader,1500,38,0,0,0,Event/Lunar/Stardust,Surface,Common
+409,Twinkle Popper,800,40,0,0,0,Event/Lunar/Stardust,Surface,Common
+411,Stargazer,700,34,0,0,0,Event/Lunar/Stardust,Surface,Common
+412,Crawltipede,10000,0,0,0,0,Event/Lunar/Solar,Surface,Common
+415,Drakomire,800,32,0,0,0,Event/Lunar/Solar,Surface,Common
+417,Sroller,700,34,0,0,0,Event/Lunar/Solar,Surface,Common
+418,Corite,600,26,0,0,0,Event/Lunar/Solar,Surface,Common
+419,Selenian,800,30,0,0,0,Event/Lunar/Solar,Surface,Common
+420,Nebula Floater,1300,20,0,0,0,Event/Lunar/Nebula,Surface,Common
+421,Brain Suckler,330,34,0,0,0,Event/Lunar/Nebula,Surface,Common
+423,Evolution Beast,850,46,0,0,0,Event/Lunar/Nebula,Surface,Common
+424,Predictor,700,30,0,0,0,Event/Lunar/Nebula,Surface,Common
+425,Storm Diver,800,40,0,0,0,Event/Lunar/Vortex,Surface,Common
+426,Alien Queen,1000,44,0,0,0,Event/Lunar/Vortex,Surface,Common
+429,Vortexian,700,34,0,0,0,Event/Lunar/Vortex,Surface,Common
+438,Lunatic Devotee,400,0,0,0,0,Dungeon,Surface,Common
+453,Skeleton Merchant,250,30,0,0,0,Any,Caverns,Rare
+454,Phantasm Dragon,10000,30,0,0,0,Dungeon,Surface,Uncommon
 460,Butcher,700,30,0,10,0,Event/Day/Eclipse,Surface,Common
 461,Creature from the Deep,400,22,0,10,0,Event/Day/Eclipse,Surface,Uncommon
 462,Fritz,270,14,0,6,0,Event/Day/Eclipse,Surface,Common
@@ -218,29 +236,33 @@
 469,The Possessed,600,28,0,13,0,Event/Day/Eclipse,Surface,Common
 470,Vicious Penguin,75,5,0,5,0,Event/Blood/Snow/Night,Surface,Uncommon
 471,Goblin Warlock,2000,26,0,50,0,Event/Goblin,Surface,Uncommon
+472,Shadowflame Apparition,180,18,0,0,0,Event/Goblin,Surface,Uncommon
 473,Corrupt Mimic,3500,34,3,0,0,Corruption,Underground/Caverns,Rare
 474,Crimson Mimic,3500,34,3,0,0,Crimson,Underground/Caverns,Rare
 475,Hallowed Mimic,3500,34,3,0,0,Hallow,Underground/Caverns,Rare
 477,Mothron,6000,30,5,0,0,Event/Day/Eclipse,Surface,Rare
+479,Baby Mothron,700,14,0,0,0,Event/Day/Eclipse,Surface,Rare
 480,Medusa,400,20,0,10,0,Any,Underground/Caverns,Rare
 481,Hoplite,70,10,0,3,0,Any,Underground/Caverns,Uncommon
 482,Granite Golem,110,18,0,5,0,Any,Underground/Caverns,Uncommon
 483,Granite Elemental,40,8,0,10,0,Any,Underground/Caverns,Uncommon
+484,Enchanted Nightcrawler,5,0,0,0,0,Any/Night,Surface,Rare
 485,Grubby,5,0,0,0,0,Jungle,Surface/Underground/Caverns,Common
 486,Sluggy,5,0,0,0,0,Jungle,Surface/Underground/Caverns,Common
 487,Buggy,5,0,0,0,0,Jungle,Surface/Underground/Caverns,Uncommon
 489,Blood Zombie,75,8,0,1,50,Event/Blood/Night,Surface,Common
 490,Drippler,50,14,0,1,50,Event/Blood/Night,Surface,Common
+491,Flying Dutchman,8000,20,0,0,0,Event/Pirate,Surface,Uncommon
 494,Crawdad,50,6,0,1,20,Any,Caverns,Common
 496,Giant Shelly,50,12,0,1,20,Any,Caverns,Common
-498,Salamander,65,10,0,1,20,Any,Caverns,Common
+498,Salamander (Any),65,10,0,1,20,Any,Caverns,Common
 510,Dune Splicer,500,34,0,7,0,Desert,Surface/Underground,Uncommon
 520,Martian Walker,2000,40,0,0,0,Event/Martian,Surface,Uncommon
 524,Ghoul,180,26,0,5,0,Desert,Underground,Common
 525,Vile Ghoul,250,30,0,6,50,Desert/Corruption,Underground,Common
 526,Tainted Ghoul,220,32,0,6,50,Desert/Crimson,Underground,Common
 527,Dreamer Ghoul,300,32,0,7,50,Desert/Hallow,Underground,Common
-528,Lamia,350,28,0,6,0,Desert/Hallow,Underground,Common
+528,Lamia (Any),350,28,0,6,0,Desert/Hallow,Underground,Common
 530,Sand Poacher,320,24,0,6,0,Desert,Underground,Common
 532,Basilisk,270,34,0,8,0,Desert,Underground,Uncommon
 533,Desert Spirit,220,20,0,12,0,Desert/Crimson/Corruption,Underground,Uncommon
@@ -253,14 +275,17 @@
 544,Flesh Reaver,400,22,0,4,0,Desert/Crimson,Surface,Uncommon
 545,Crystal Thresher,450,26,0,4,0,Desert/Hallow,Surface,Uncommon
 546,Angry Tumbler,50,6,0,1,0,Desert,Surface,Uncommon
-552,Etherian Goblin,30,14,0,0,0,Event/OldOnes,Any,Common
-553,Etherian Goblin Bomber,50,16,0,0,0,Event/OldOnes,Any,Common
-558,Etherian Wyvern,60,4,0,0,0,Event/OldOnes,Any,Common
-561,Etherian Javelin Thrower,60,18,0,0,0,Event/OldOnes,Any,Common
-568,Wither Beast,500,30,0,0,0,Event/OldOnes,Any,Common
-570,Drakin,900,30,0,0,0,Event/OldOnes,Any,Common
-572,Kobold,260,26,0,0,0,Event/OldOnes,Any,Common
-574,Kobold Glider,170,16,0,0,0,Event/OldOnes,Any,Common
+551,Betsy,50000,38,0,0,0,Event/OldOnes,Surface,Uncommon
+552,Etherian Goblin,30,14,0,0,0,Event/OldOnes,Surface,Common
+553,Etherian Goblin Bomber,50,16,0,0,0,Event/OldOnes,Surface,Common
+558,Etherian Wyvern,60,4,0,0,0,Event/OldOnes,Surface,Common
+561,Etherian Javelin Thrower,60,18,0,0,0,Event/OldOnes,Surface,Common
+564,Dark Mage,4000,38,0,0,0,Event/OldOnes,Surface,Uncommon
+568,Wither Beast,500,30,0,0,0,Event/OldOnes,Surface,Common
+570,Drakin,900,30,0,0,0,Event/OldOnes,Surface,Common
+572,Kobold,260,26,0,0,0,Event/OldOnes,Surface,Common
+574,Kobold Glider,170,16,0,0,0,Event/OldOnes,Surface,Common
+576,Ogre,13000,40,0,0,0,Event/OldOnes,Surface,Uncommon
 578,Etherian Lightning Bug,500,36,0,0,0,Event/OldOnes,Any,Common
 580,Antlion Charger,80,10,0,0,80,Desert,Surface/Underground,Common
 581,Antlion Swarmer,60,8,0,0,90,Desert,Surface/Underground,Common
@@ -285,3 +310,13 @@
 631,Rock Golem,1000,35,2,50,0,Any,Caverns,Rare
 634,Spore Bat,16,2,0,0,90,Mushroom,Any,Common
 635,Spore Skeleton,60,8,0,1,0,Mushroom,Any,Common
+639,Gem Squirrel (Any),5,0,0,0,0,Any,Caverns,Rare
+646,Gem Bunny (Any),5,0,0,0,0,Any,Caverns,Rare
+653,Hell Butterfly,5,0,0,0,0,Any,Underworld,Uncommon
+654,Lavafly,5,0,0,0,0,Any,Underworld,Uncommon
+655,Magma Snail,5,0,0,0,0,Any,Underworld,Uncommon
+661,Prismatic Lacewing,5,0,0,0,0,Hallow/Night,Surface,Rare
+669,Stinkbug,5,0,0,0,0,Forest,Surface,Uncommon
+676,Shimmer Slime,80,5,0,1,50,Any,Underground/Caverns,Rare
+677,Faeling,5,0,0,0,0,Any,Underground/Caverns,Rare
+1004,Pinky,150,5,1,0,0,Any,Surface/Underground/Caverns,Rare
