@@ -6,10 +6,10 @@
 7,Devourer,100,6,0,1,40,Corruption,Any,Uncommon
 16,Mother Slime,90,7,0,0,75,Any,Caverns,Common
 24,Fire Imp,70,16,0,3,50,Any,Underworld,Common
-26,Goblin Peon,60,4,0,1,0,Event/Goblin,Any,Common
-27,Goblin Thief,80,6,0,2,0,Event/Goblin,Any,Common
-28,Goblin Warrior,110,8,0,1,50,Event/Goblin,Any,Common
-29,Goblin Sorcerer,40,2,0,2,0,Event/Goblin,Any,Uncommon
+26,Goblin Peon,60,4,0,1,0,Event/Goblin,Surface,Common
+27,Goblin Thief,80,6,0,2,0,Event/Goblin,Surface,Common
+28,Goblin Warrior,110,8,0,1,50,Event/Goblin,Surface,Common
+29,Goblin Sorcerer,40,2,0,2,0,Event/Goblin,Surface,Uncommon
 31,Angry Bones,80,8,0,1,30,Dungeon,Any,Common
 32,Dark Caster,50,2,0,1,40,Dungeon,Any,Common
 34,Cursed Skull,40,6,0,1,50,Dungeon,Any,Common
@@ -171,7 +171,7 @@
 326,Splinterling,1200,32,0,20,0,Night/Event/Pumpkin,Surface,Common
 329,Hellhound,1800,38,0,30,0,Night/Event/Pumpkin,Surface,Common
 330,Poltergeist,1250,44,0,45,0,Night/Event/Pumpkin,Surface,Common
-338,Zombie Elf,600,18,0,12,0,Night/Event/Pumpkin,Surface,Common
+338,Zombie Elf,600,18,0,12,0,Night/Event/Frost,Surface,Common
 342,Gingerbread Man,750,26,0,18,0,Night/Event/Frost,Surface,Common
 343,Yeti,3500,50,0,30,0,Night/Event/Frost,Surface,Uncommon
 344,Everscream,13000,38,1,0,0,Event/Night/Frost,Surface,Uncommon
