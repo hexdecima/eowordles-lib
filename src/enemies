@@ -46,7 +46,7 @@
 77,Armored Skeleton,260,28,0,4,0,Any,Caverns,Common
 78,Mummy,130,16,0,6,0,Desert,Surface/Underground,Common
 79,Dark Mummy,180,18,0,7,0,Desert/Corruption,Surface/Underground,Common
-80,Light Mummy,200,18,0,7,0,Desert/Hallow,Surface/Undeground,Common
+80,Light Mummy,200,18,0,7,0,Desert/Hallow,Surface/Underground,Common
 81,Corrupt Slime,170,20,0,4,0,Corruption,Surface/Underground/Caverns,Common
 82,Wraith,160,16,0,5,0,Night,Surface,Common
 83,Cursed Hammer,200,18,0,10,0,Corruption,Underground/Caverns,Uncommon
@@ -306,7 +306,7 @@
 625,Sea Turtle,5,0,0,0,0,Ocean,Any,Common
 626,Seahorse,5,0,0,0,0,Ocean,Any,Uncommon
 628,Angry Dandelion,50,0,0,0,50,Forest,Surface,Uncommon
-630,Blood Mummy,180,18,0,7,0,Desert/Crimson,Surface/Undeground/Caverns,Common
+630,Blood Mummy,180,18,0,7,0,Desert/Crimson,Surface/Underground/Caverns,Common
 631,Rock Golem,1000,35,2,50,0,Any,Caverns,Rare
 634,Spore Bat,16,2,0,0,90,Mushroom,Any,Common
 635,Spore Skeleton,60,8,0,1,0,Mushroom,Any,Common
