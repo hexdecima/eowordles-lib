@@ -293,7 +293,7 @@ impl Enemy {
             .iter()
             .cloned()
             .partition(|env| other.contains(env));
-        let missing = right.len() != self.environments.len();
+        let missing = !wrong.is_empty() || right.len() != self.environments.len();
 
         EnvironmentDiff {
             right,
@@ -307,7 +307,7 @@ impl Enemy {
             .iter()
             .cloned()
             .partition(|lay| other.contains(lay));
-        let missing = right.len() != self.layers.len();
+        let missing = !wrong.is_empty() || right.len() != self.layers.len();
 
         LayerDiff {
             right,
