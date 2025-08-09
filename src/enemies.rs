@@ -833,7 +833,7 @@ pub fn list_enemies() -> Box<[Enemy]> {
             Common,
         ),
         Enemy::new(
-            153,
+            154,
             "Ice Tortoise",
             400,
             28,
