@@ -1,16 +1,9 @@
 use std::{cmp::Ordering, fmt::Display};
 use serde::{Deserialize, Serialize};
 
-pub fn hello() -> String {
-    String::from("meow")
-}
-
-// TODO: move data to a rust file to make it nyoom fast.
-pub const ENEMIES: &str = include_str!("./enemies");
-
-pub fn list_enemies() -> Box<[Enemy]> {
-    ENEMIES.lines().skip(1).map(Enemy::from).collect()
-}
+pub mod enemies;
+#[cfg(test)]
+mod test;
 
 #[derive(Debug, Clone, PartialEq, Eq, Deserialize, Serialize)]
 pub enum Environment {
@@ -44,7 +37,6 @@ pub enum Environment {
     Legion, // Frost Legion
     Frost,
     Pumpkin,
-    Unknown,
 }
 
 impl Display for Environment {
@@ -61,7 +53,7 @@ impl Display for Environment {
             Corruption => "Corruption",
             Crimson => "Crimson",
             Hallow => "Hallow",
-            Mushroom => "Glowing Mushrooms",
+            Mushroom => "Glowing Mushroom",
             Dungeon => "Dungeon",
             Event => "Event",
             Day => "Day",
@@ -82,50 +74,9 @@ impl Display for Environment {
             Legion => "Frost Legion",
             Frost => "Frost Moon",
             Pumpkin => "Pumpkin Moon",
-            Unknown => "Unknown",
         };
 
         write!(f, "{text}")
-    }
-}
-
-impl From<&str> for Environment {
-    fn from(value: &str) -> Self {
-        use Environment::*;
-
-        match value {
-            "Any" => Any,
-            "Forest" => Forest,
-            "Snow" => Snow,
-            "Jungle" => Jungle,
-            "Desert" => Desert,
-            "Ocean" => Ocean,
-            "Corruption" => Corruption,
-            "Crimson" => Crimson,
-            "Hallow" => Hallow,
-            "Mushroom" => Mushroom,
-            "Dungeon" => Dungeon,
-            "Graveyard" => Graveyard,
-            "Day" => Day,
-            "Goblin" => Goblin,
-            "Pirate" => Pirate,
-            "Night" => Night,
-            "Event" => Event,
-            "OldOnes" => OldOnes,
-            "Blood" => Blood,
-            "Martian" => Martian,
-            "Eclipse" => Eclipse,
-            "Lunar" => Lunar,
-            "Solar" => Solar,
-            "Stardust" => Stardust,
-            "Nebula" => Nebula,
-            "Vortex" => Vortex,
-            "Rain" => Rain,
-            "Legion" => Legion,
-            "Frost" => Frost,
-            "Pumpkin" => Pumpkin,
-            _ => Unknown,
-        }
     }
 }
 
@@ -133,6 +84,7 @@ impl From<&str> for Environment {
 pub struct EnvironmentDiff {
     pub right: Vec<Environment>,
     pub wrong: Vec<Environment>,
+    pub missing: bool
 }
 
 #[derive(Debug, Clone, PartialEq, Eq, Deserialize, Serialize)]
@@ -143,7 +95,6 @@ pub enum Layer {
     Underground,
     Caverns,
     Underworld,
-    Unknown,
 }
 
 impl Display for Layer {
@@ -157,26 +108,9 @@ impl Display for Layer {
             Underground => "Underground",
             Caverns => "Caverns",
             Underworld => "Underworld",
-            Unknown => "Unknown",
         };
 
         write!(f, "{text}")
-    }
-}
-
-impl From<&str> for Layer {
-    fn from(value: &str) -> Layer {
-        use Layer::*;
-
-        match value {
-            "Any" => Any,
-            "Space" => Space,
-            "Surface" => Surface,
-            "Underground" => Underground,
-            "Caverns" => Caverns,
-            "Underworld" => Underworld,
-            _ => Unknown,
-        }
     }
 }
 
@@ -184,6 +118,7 @@ impl From<&str> for Layer {
 pub struct LayerDiff {
     pub right: Vec<Layer>,
     pub wrong: Vec<Layer>,
+    pub missing: bool
 }
 
 #[derive(Debug, Clone, PartialEq, Eq, Deserialize, Serialize)]
@@ -194,11 +129,9 @@ pub struct Coins {
 }
 
 impl Coins {
-    pub fn new<T: AsRef<str>>(g: T, s: T, c: T) -> Self {
+    pub fn new(gold: u8, silver: u8, copper: u8) -> Self {
         Self {
-            gold: g.as_ref().parse::<_>().unwrap(),
-            silver: s.as_ref().parse::<_>().unwrap(),
-            copper: c.as_ref().parse::<_>().unwrap(),
+            gold, silver, copper
         }
     }
     pub fn as_copper(&self) -> usize {
@@ -239,7 +172,6 @@ pub enum Rarity {
     Common,
     Uncommon,
     Rare,
-    Unknown,
 }
 
 impl Display for Rarity {
@@ -248,7 +180,6 @@ impl Display for Rarity {
             Rarity::Common => "Common",
             Rarity::Uncommon => "Uncommon",
             Rarity::Rare => "Rare",
-            Rarity::Unknown => "Unknown",
         };
 
         write!(f, "{text}")
@@ -273,24 +204,7 @@ impl Ord for Rarity {
             Rare => match other {
                 Common | Uncommon => Less,
                 Rare => Equal,
-                Unknown => Greater,
             },
-            Unknown => match other {
-                _ => Less,
-            },
-        }
-    }
-}
-
-impl From<&str> for Rarity {
-    fn from(value: &str) -> Rarity {
-        use Rarity::*;
-
-        match value {
-            "Common" => Common,
-            "Uncommon" => Uncommon,
-            "Rare" => Rare,
-            _ => Unknown,
         }
     }
 }
@@ -330,6 +244,12 @@ pub struct Enemy {
     pub rarity: Rarity,
 }
 impl Enemy {
+    pub fn new(id: u16, name: impl AsRef<str>, life: u16, defence: u16, coins: Coins, environments: Vec<Environment>, layers: Vec<Layer>, rarity: Rarity) -> Self {
+        let name = name.as_ref().to_lowercase();
+        Self {
+            id, name, life, defence, coins, environments, layers, rarity
+        }
+    }
     pub fn diff(&self, other: &Enemy) -> EnemyDiff {
         let name = self.name == other.name;
         let life = self.life.cmp(&other.life).into();
@@ -355,7 +275,9 @@ impl Enemy {
             .iter()
             .cloned()
             .partition(|env| other.contains(env));
-        EnvironmentDiff { right, wrong }
+        let missing = wrong.is_empty() && (right.len() == self.environments.len());
+
+        EnvironmentDiff { right, wrong, missing }
     }
     pub fn diff_layer(&self, other: &[Layer]) -> LayerDiff {
         let (right, wrong): (Vec<Layer>, Vec<Layer>) = self
@@ -363,34 +285,10 @@ impl Enemy {
             .iter()
             .cloned()
             .partition(|lay| other.contains(lay));
-        LayerDiff { right, wrong }
-    }
-}
+        let missing = wrong.is_empty() && (right.len() == self.layers.len());
 
-impl From<&str> for Enemy {
-    fn from(value: &str) -> Self {
-        let mut chunks = value.split(',');
-        let id = chunks.next().unwrap();
-        let name = chunks.next().unwrap();
-        let life = chunks.next().unwrap();
-        let defence = chunks.next().unwrap();
-        let g = chunks.next().unwrap();
-        let s = chunks.next().unwrap();
-        let c = chunks.next().unwrap();
-        let environment = chunks.next().unwrap();
-        let layer = chunks.next().unwrap();
-        let rarity = chunks.next().expect(&format!("{id}"));
 
-        Self {
-            id: id.parse::<_>().unwrap(),
-            name: name.to_owned(),
-            life: life.parse::<_>().unwrap(),
-            defence: defence.parse::<_>().unwrap(),
-            coins: Coins::new(g, s, c),
-            environments: environment.split('/').map(Environment::from).collect(),
-            layers: layer.split('/').map(Layer::from).collect(),
-            rarity: rarity.try_into().unwrap(),
-        }
+        LayerDiff { right, wrong, missing }
     }
 }
 
