@@ -1,5 +1,5 @@
-use std::{cmp::Ordering, fmt::Display};
 use serde::{Deserialize, Serialize};
+use std::{cmp::Ordering, fmt::Display};
 
 pub mod enemies;
 #[cfg(test)]
@@ -84,7 +84,7 @@ impl Display for Environment {
 pub struct EnvironmentDiff {
     pub right: Vec<Environment>,
     pub wrong: Vec<Environment>,
-    pub missing: bool
+    pub missing: bool,
 }
 
 #[derive(Debug, Clone, PartialEq, Eq, Deserialize, Serialize)]
@@ -118,7 +118,7 @@ impl Display for Layer {
 pub struct LayerDiff {
     pub right: Vec<Layer>,
     pub wrong: Vec<Layer>,
-    pub missing: bool
+    pub missing: bool,
 }
 
 #[derive(Debug, Clone, PartialEq, Eq, Deserialize, Serialize)]
@@ -131,7 +131,9 @@ pub struct Coins {
 impl Coins {
     pub fn new(gold: u8, silver: u8, copper: u8) -> Self {
         Self {
-            gold, silver, copper
+            gold,
+            silver,
+            copper,
         }
     }
     pub fn as_copper(&self) -> usize {
@@ -244,10 +246,26 @@ pub struct Enemy {
     pub rarity: Rarity,
 }
 impl Enemy {
-    pub fn new(id: u16, name: impl AsRef<str>, life: u16, defence: u16, coins: Coins, environments: Vec<Environment>, layers: Vec<Layer>, rarity: Rarity) -> Self {
-        let name = name.as_ref().to_lowercase();
+    pub fn new(
+        id: u16,
+        name: impl AsRef<str>,
+        life: u16,
+        defence: u16,
+        coins: Coins,
+        environments: Vec<Environment>,
+        layers: Vec<Layer>,
+        rarity: Rarity,
+    ) -> Self {
+        let name = name.as_ref().to_string();
         Self {
-            id, name, life, defence, coins, environments, layers, rarity
+            id,
+            name,
+            life,
+            defence,
+            coins,
+            environments,
+            layers,
+            rarity,
         }
     }
     pub fn diff(&self, other: &Enemy) -> EnemyDiff {
@@ -277,7 +295,11 @@ impl Enemy {
             .partition(|env| other.contains(env));
         let missing = wrong.is_empty() && (right.len() == self.environments.len());
 
-        EnvironmentDiff { right, wrong, missing }
+        EnvironmentDiff {
+            right,
+            wrong,
+            missing,
+        }
     }
     pub fn diff_layer(&self, other: &[Layer]) -> LayerDiff {
         let (right, wrong): (Vec<Layer>, Vec<Layer>) = self
@@ -287,8 +309,11 @@ impl Enemy {
             .partition(|lay| other.contains(lay));
         let missing = wrong.is_empty() && (right.len() == self.layers.len());
 
-
-        LayerDiff { right, wrong, missing }
+        LayerDiff {
+            right,
+            wrong,
+            missing,
+        }
     }
 }
 
