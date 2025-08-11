@@ -638,7 +638,7 @@ pub fn list_enemies() -> Box<[Enemy]> {
             800,
             25,
             Coins::new(1, 0, 0),
-            vec![E::Night, E::Event],
+            vec![E::Night, E::Event, E::Blood],
             vec![L::Surface],
             Uncommon,
         ),
