@@ -30,7 +30,7 @@ impl Display for Event {
         let text = match self {
             Goblin => "Goblin Invasion",
             Pirate => "Pirate Invasion",
-            Rain => "Rain or Wizard",
+            Rain => "Rain",
             Slime => "Slime Rain",
             Wind => "Windy Day",
             Martian => "Martian Invasion",
