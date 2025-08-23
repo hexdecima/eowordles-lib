@@ -43,7 +43,7 @@ impl Coins {
     pub fn as_copper(&self) -> usize {
         (self.copper as usize
             + (self.silver as usize * 100usize)
-            + (self.gold as usize * 1000usize)) as usize
+            + (self.gold as usize * 10000usize)) as usize
     }
 }
 
